@@ -21,4 +21,10 @@ router.get('/about', (req, res) => {
   });
 });
 
+// Budget Planner route
+router.get('/budget', (req, res) => {
+  res.render('budget'); // looks for views/budget.ejs
+});
+
+
 module.exports = router;
