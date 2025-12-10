@@ -1,0 +1,39 @@
+<%- include('./partials/header') %>
+
+<div class="container">
+  <div class="welcome-section">
+    <h1><%= message %></h1>
+    <p>A simple Budget Planner for web applications</p>
+    
+    <% if (isAuthenticated) { %>
+      <div class="action-buttons">
+        <a href="/user/profile" class="btn primary-btn">View Profile</a>
+      </div>
+    <% } else { %>
+      <div class="action-buttons">
+        <a href="/auth/login" class="btn primary-btn">Login</a>
+        <a href="/auth/register" class="btn secondary-btn">Register</a>
+      </div>
+    <% } %>
+  </div>
+  
+  <div class="features-section">
+    <h2>Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Allocation</h3>
+        <p>Setting and tracking budgets per category</p>
+      </div>
+      <div class="feature-card">
+        <h3>Progress</h3>
+        <p>Monitoring savgings and investment goals</p>
+      </div>
+      <div class="feature-card">
+        <h3>Summary</h3>
+        <p>Monthly totals</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>
