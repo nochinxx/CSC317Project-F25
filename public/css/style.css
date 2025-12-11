@@ -203,6 +203,15 @@ input:focus {
   background-color: var(--secondary-dark);
 }
 
+.start-btn {
+  background-color: #e67e22;
+  color: var(--white);
+}
+
+.start-btn:hover {
+  background-color: #d35400;
+}
+
 .action-buttons {
   display: flex;
   gap: 1rem;
