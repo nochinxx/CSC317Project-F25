@@ -20,6 +20,9 @@ const { pool } = require('./config/database');
 const indexRoutes = require('./routes/index');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+// New routes
+const budgetRouter = require('./routes/budget');
+const transactionRouter = require('./routes/transaction');
 
 // Import custom middleware
 const { setLocals } = require('./middlewares/locals');
@@ -43,7 +46,8 @@ if (process.env.DATABASE_URL) {
 
 // Configure Express
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// data parsed as simple key-value pairs
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
@@ -112,6 +116,9 @@ app.use(setLocals);
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
+// new routes
+app.use('/', budgetRouter);
+app.use('/', transactionRouter);
 
 // Error handling middleware
 app.use(handleErrors);

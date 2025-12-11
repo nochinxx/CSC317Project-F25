@@ -15,12 +15,32 @@
     </nav>
   </header>
 
+  <% 
+    const safeSummary = (typeof summary !== 'undefined' && summary) 
+      ? summary 
+      : { totalIncome: 0, totalExpense: 0, balance: 0 };
+  %>
+
   <main class="budget-container">
-    <!-- Income Section -->
-    <section class="income-section">
-      <h2>Enter Amount of Income</h2>
-      <input type="text" id="income-input" placeholder="Enter income amount">
-      <button id="add-income">Enter</button>
+    <!-- Income form -->
+    <section>
+      <h2>Add Income</h2>
+      <form action="/transactions" method="POST">
+        <input type="number" step="0.01" name="amount" required>
+        <input type="hidden" name="type" value="income">
+
+        <select name="category_id">
+          <% if (typeof categories !== 'undefined' && categories && categories.length) { %>
+            <% categories.forEach(c => { if (c.type === 'income') { %>
+              <option value="<%= c.id %>"><%= c.name %></option>
+            <% } }) %>
+          <% } else { %>
+            <option disabled>No income categories yet</option>
+          <% } %>
+        </select>
+
+        <button type="submit">Add Income</button>
+      </form>
     </section>
 
     <!-- Expense Section -->
@@ -37,23 +57,48 @@
           <option value="Transportation">Transportation</option>
           <option value="Utilities">Utilities</option>
           <option value="Other">Other</option>
+    <!-- Expense form -->
+    <section>
+      <h2>Add Expense</h2>
+      <form action="/transactions" method="POST">
+        <input type="number" step="0.01" name="amount" required>
+
+        <select name="category_id" required>
+          <% if (typeof categories !== 'undefined' && categories && categories.length) { %>
+            <% categories.forEach(c => { if (c.type === 'expense') { %>
+              <option value="<%= c.id %>"><%= c.name %></option>
+            <% } }) %>
+          <% } else { %>
+            <option disabled>No expense categories yet</option>
+          <% } %>
         </select>
-        <button id="add-expense">Add</button>
-      </div>
 
-      <h3>List of Added Expenses</h3>
-      <ul id="expense-list"></ul>
+        <input type="hidden" name="type" value="expense">
+        <button type="submit">Add Expense</button>
+      </form>
+
+      <h3>Recent Expenses</h3>
+      <ul>
+        <% if (typeof transactions !== 'undefined' && transactions && transactions.length) { %>
+          <% transactions.forEach(t => { if (t.type === 'expense') { %>
+            <li>$<%= t.amount %> – <%= t.category_name || 'Uncategorized' %></li>
+          <% } }) %>
+        <% } else { %>
+          <li>No expenses yet</li>
+        <% } %>
+      </ul>
     </section>
 
-    <!-- Summary Section -->
-    <section class="summary-section">
-      <h2>Budget Summary</h2>
-      <p>Total Income: $<span id="total-income">0</span></p>
-      <p>Total Expenses: $<span id="total-expenses">0</span></p>
-      <p>Remaining Balance: $<span id="balance">0</span></p>
+    <!-- Summary -->
+    <section>
+      <h2>Summary</h2>
+      <p>Total Income: $<%= safeSummary.totalIncome %></p>
+      <p>Total Expenses: $<%= safeSummary.totalExpense %></p>
+      <p>Balance: $<%= safeSummary.balance %></p>
     </section>
+    
   </main>
 
-  <script src="/js/budget.js"></script>
+  <!-- <script src="/js/budget.js"></script> -->
 </body>
 </html>

@@ -35,6 +35,33 @@ const createTables = async () => {
     `);
     console.log('✓ Profile images table created');
 
+        // Create categories table
+        await pool.query(`
+          CREATE TABLE IF NOT EXISTS categories (
+            id SERIAL PRIMARY KEY,
+            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+            name TEXT NOT NULL,
+            type TEXT NOT NULL CHECK (type IN ('income', 'expense'))
+          )
+        `);
+        console.log('✓ Categories table created');
+    
+        // Create transactions table
+        await pool.query(`
+          CREATE TABLE IF NOT EXISTS transactions (
+            id SERIAL PRIMARY KEY,
+            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+            category_id INTEGER REFERENCES categories(id),
+            type TEXT NOT NULL CHECK (type IN ('income', 'expense')),
+            amount NUMERIC(10, 2) NOT NULL CHECK (amount >= 0),
+            description TEXT,
+            date DATE NOT NULL DEFAULT CURRENT_DATE,
+            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+          )
+        `);
+        console.log('✓ Transactions table created');
+    
+
     // Create session table for connect-pg-simple
     await pool.query(`
       CREATE TABLE IF NOT EXISTS "session" (
