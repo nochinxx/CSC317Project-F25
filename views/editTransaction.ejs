@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Transaction</title>
+  <link rel="stylesheet" href="/css/budget.css">
+</head>
+<body>
+  <h1>Edit Transaction</h1>
+
+  <form action="/transactions/<%= transaction.id %>/edit" method="POST">
+    <label>
+      Amount:
+      <input type="number" step="0.01" name="amount" value="<%= transaction.amount %>" required>
+    </label>
+
+    <label>
+      Type:
+      <select name="type" required>
+        <option value="income" <%= transaction.type === 'income' ? 'selected' : '' %>>Income</option>
+        <option value="expense" <%= transaction.type === 'expense' ? 'selected' : '' %>>Expense</option>
+      </select>
+    </label>
+
+    <label>
+      Category:
+      <select name="category_id">
+        <% categories.forEach(c => { %>
+          <option value="<%= c.id %>" <%= c.id === transaction.category_id ? 'selected' : '' %>>
+            <%= c.name %> (<%= c.type %>)
+          </option>
+        <% }) %>
+      </select>
+    </label>
+
+    <label>
+      Description:
+      <input type="text" name="description" value="<%= transaction.description || '' %>">
+    </label>
+
+    <label>
+      Date:
+      <input type="date" name="date" value="<%= transaction.date.toISOString().slice(0,10) %>">
+    </label>
+
+    <button type="submit">Save</button>
+    <a href="/budget">Cancel</a>
+  </form>
+</body>
+</html>
