@@ -109,10 +109,6 @@ input, select {
     margin: 5px;
 }
 
-/* ... (Your existing CSS rules go here) ... */
-
-/* New CSS to remove bullet points and style lists */
-
 /* Removes bullet points */
 main ul {
   list-style-type: none;
