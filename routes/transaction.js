@@ -34,5 +34,27 @@ router.post('/transactions', isAuthenticated, async (req, res, next) => {
   }
 });
 
+// Route to handle transaction deletion
+router.post('/transactions/delete/:id', isAuthenticated, async (req, res, next) => {
+  try {
+    const transactionId = req.params.id;
+    const userId = req.session.user.id; // Security check: ensure the user owns the transaction
+
+    // You will need to implement this method in your models/Transaction.js
+    const deleted = await Transaction.deleteTransaction(transactionId, userId);
+
+    if (deleted) {
+      // You might redirect back to the page they came from, or a default view
+      res.redirect('/budget'); 
+    } else {
+      // Handle case where transaction wasn't found or user didn't own it
+      res.status(404).send('Transaction not found or unauthorized');
+    }
+
+  } catch (err) {
+    next(err);
+  }
+});
+
 
 module.exports = router;
