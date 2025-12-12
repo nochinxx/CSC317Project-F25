@@ -8,35 +8,23 @@
 }
 
 :root {
-  --primary-color: #3498db;
-  --primary-dark: #2980b9;
-  --secondary-color: #2ecc71;
-  --secondary-dark: #27ae60;
-  --text-color: #333;
-  --text-light: #666;
-  --background-color: #f5f5f5;
-  --border-color: #ddd;
-  --error-color: #e74c3c;
-  --success-color: #2ecc71;
-  --warning-color: #f39c12;
-  --white: #fff;
+  /* Orange and Brown Palette */
+  --primary-color: #e67e22;         
+  --primary-dark: #d35400;          
+  --secondary-color: #A0522D;       
+  --secondary-dark: #8B4513;        
+  
+  --text-color: #333;              
+  --text-light: #666;               
+  --background-color: #f5f5f5;      
+  --border-color: #ddd;             
+  --error-color: #e74c3c;           
+  --success-color: #2ecc71;      
+  --warning-color: #f39c12;     
+  --white: #fff;                    
   --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-:root {
-  /* Red/Green Palette */
-  --primary-color: #8B0000;         /* Dark Red (Header/Main Theme) */
-  --accent-color: #006400;          /* Dark Green (Buttons/Actions) */
-  
-  /* Backgrounds & Text */
-  --background-light: #f2f2f2;      /* Light gray body background */
-  --text-dark: #333;                 /* Dark text */
-  --card-bg: #fff;                   /* White card background */
 
-  /* Text colors for contrast */
-  --header-text-color: #fff;
-  --button-text-color: #fff;
-  --border-color: #ccc;
-}
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
