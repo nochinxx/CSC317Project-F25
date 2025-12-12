@@ -231,6 +231,7 @@ input:focus {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
+  justify-content: center;
 }
 
 /* 
@@ -323,12 +324,14 @@ input:focus {
 }
 
 .welcome-section h1 {
+  text-align: center;
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: var(--primary-color);
 }
 
 .features-section {
+  text-align: center;
   margin-top: 3rem;
 }
 
@@ -339,6 +342,7 @@ input:focus {
 }
 
 .features-section h2:after {
+  text-align: center;
   content: '';
   display: block;
   width: 50px;
@@ -348,6 +352,7 @@ input:focus {
 }
 
 .feature-grid {
+  
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
