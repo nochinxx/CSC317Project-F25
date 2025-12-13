@@ -99,6 +99,9 @@ button:hover {
   margin: 0;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
 /* Updated: Added text-align center to expense-inputs */
 .expense-inputs {
     text-align: center; 
