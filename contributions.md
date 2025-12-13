@@ -47,7 +47,8 @@ This document summarizes the contributions made by each group member to the CSC3
 
 ---
 ## Abraham - Frontend Testing
-
+- Contributed updating the Welcome Page to better reflect the purpose of the application. 
+- Changed it to ‘Budget Planner,’ which immediately tells users what the app is about. 
 ### Frontend Testing
 - Checked rendering of the UI across different states and made adjustments to ensure visual consistency.
 
