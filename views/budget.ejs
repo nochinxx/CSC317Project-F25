@@ -41,22 +41,30 @@
 
         <button type="submit">Add Income</button>
       </form>
+      <ul>
+        <% if (typeof transactions !== 'undefined' && transactions && transactions.length) { %>
+          <% transactions.forEach(t => { if (t.type === 'income') { %>
+            <li>
+              $<%= t.amount %> – <%= t.category_name || 'Uncategorized' %>
+      
+              <!-- Edit link, we load a new form with the transaction data to edit it -->
+              <a href="/transactions/<%= t.id %>/edit">edit</a>
+      
+              <!-- Delete form -->
+              <form action="/transactions/<%= t.id %>/delete" method="POST" style="display:inline">
+                <button type="submit">delete</button>
+              </form>
+            </li>
+          <% } }) %>
+        <% } else { %>
+          <li>No income yet</li>
+        <% } %>
+      </ul>
     </section>
 
     <!-- Expense Section -->
     <section class="expense-section">
       <h2>Expenses</h2>
-      <div class="expense-inputs">
-        <input type="number" id="expense-amount" placeholder="Amount">
-        <select id="expense-type">
-          <option value="Entertainment">Entertainment</option>
-          <option value="Food">Food</option>
-          <option value="Investments">Investments</option>
-          <option value="Rent">Rent</option>
-          <option value="Savings">Savings</option>
-          <option value="Transportation">Transportation</option>
-          <option value="Utilities">Utilities</option>
-          <option value="Other">Other</option>
     <!-- Expense form -->
     <section>
       <h2>Add Expense</h2>
@@ -81,7 +89,14 @@
       <ul>
         <% if (typeof transactions !== 'undefined' && transactions && transactions.length) { %>
           <% transactions.forEach(t => { if (t.type === 'expense') { %>
-            <li>$<%= t.amount %> – <%= t.category_name || 'Uncategorized' %></li>
+            <li>
+              $<%= t.amount %> – <%= t.category_name || 'Uncategorized' %>
+              <!-- Similar to income, we provide edit and delete options to meet CRUD req -->
+              <a href="/transactions/<%= t.id %>/edit">edit</a>
+              <form action="/transactions/<%= t.id %>/delete" method="POST" style="display:inline">
+                <button type="submit">delete</button>
+              </form>
+            </li>
           <% } }) %>
         <% } else { %>
           <li>No expenses yet</li>

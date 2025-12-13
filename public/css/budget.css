@@ -2,13 +2,15 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #92817A;
+  /* Updated: Soft yellow background */
+  background-color: #FFF5E1; 
   color: #333;
 }
 
 header {
-  background-color: #4A5043;
-  color: #D9CAB3;
+  /* Updated: Vibrant orange header background */
+  background-color: #FF9900;
+  color: #FFFFFF;
   text-align: center;
   padding: 15px;
 }
@@ -21,8 +23,23 @@ header {
 }
 
 section {
-  background: #F1DABF;
-  border: 1px solid #FFFBFF;
+  /* Updated: Lighter section background */
+  background: #FFF5E1;
+  border: 1px solid #FFCC00;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+/* Updated: Added text-align center to income-section */
+.income-section {
+  text-align: center;
+  /* Updated: Lighter section background */
+  background: #FFF5E1;
+  border: 1px solid #FFCC00;
   padding: 10px;
   margin: 10px 0;
   width: 100%;
@@ -32,12 +49,15 @@ section {
 }
 
 button {
-  background-color: #4A5043;
-  color: #D9CAB3;
+  /* Updated: Orange button background */
+  background-color: #FF9900;
+  color: #FFFFFF;
   border: none;
   padding: 8px 15px;
   cursor: pointer;
   border-radius: 4px;
+  /* Added margin for spacing around buttons */
+  margin: 5px; 
 }
 
 button:hover {
@@ -48,10 +68,11 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative
+  position: relative;
   padding: 10px 20px;
   border-bottom: 2px solid #ddd;
-  background-color: #362417;
+  /* Updated: Darker orange/brown base */
+  background-color: #A0522D;
 }
 
 .navbar nav {
@@ -66,7 +87,8 @@ button:hover {
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
-   color: #ff8c00;
+  /* Updated: Bright yellow link color */
+   color: #FFCC00;
 }
 
 .nav-home:hover {
@@ -80,4 +102,12 @@ button:hover {
 ul {
   list-style-type: none;
   padding: 0;
+/* Updated: Added text-align center to expense-inputs */
+.expense-inputs {
+    text-align: center; 
+}
+
+/* Added margin to inputs and select for better spacing when centered */
+input, select {
+    margin: 5px;
 }
