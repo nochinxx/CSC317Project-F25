@@ -41,6 +41,25 @@
 
         <button type="submit">Add Income</button>
       </form>
+      <ul>
+        <% if (typeof transactions !== 'undefined' && transactions && transactions.length) { %>
+          <% transactions.forEach(t => { if (t.type === 'income') { %>
+            <li>
+              $<%= t.amount %> – <%= t.category_name || 'Uncategorized' %>
+      
+              <!-- Edit link, we load a new form with the transaction data to edit it -->
+              <a href="/transactions/<%= t.id %>/edit">edit</a>
+      
+              <!-- Delete form -->
+              <form action="/transactions/<%= t.id %>/delete" method="POST" style="display:inline">
+                <button type="submit">delete</button>
+              </form>
+            </li>
+          <% } }) %>
+        <% } else { %>
+          <li>No income yet</li>
+        <% } %>
+      </ul>
     </section>
 
     <!-- Expense Section -->
@@ -72,7 +91,14 @@
       <ul>
         <% if (typeof transactions !== 'undefined' && transactions && transactions.length) { %>
           <% transactions.forEach(t => { if (t.type === 'expense') { %>
-            <li>$<%= t.amount %> – <%= t.category_name || 'Uncategorized' %></li>
+            <li>
+              $<%= t.amount %> – <%= t.category_name || 'Uncategorized' %>
+              <!-- Similar to income, we provide edit and delete options to meet CRUD req -->
+              <a href="/transactions/<%= t.id %>/edit">edit</a>
+              <form action="/transactions/<%= t.id %>/delete" method="POST" style="display:inline">
+                <button type="submit">delete</button>
+              </form>
+            </li>
           <% } }) %>
         <% } else { %>
           <li>No expenses yet</li>
