@@ -95,5 +95,26 @@ router.post('/transactions/:id/edit', isAuthenticated, async (req, res, next) =>
 });
 
 
+// Transaction deletion route
+router.post('/transactions/delete/:id', isAuthenticated, async (req, res, next) => {
+  try {
+    const transactionId = req.params.id;
+    const userId = req.session.user.id;
+
+    const deleted = await Transaction.deleteTransaction(transactionId, userId);
+
+    if (deleted) {
+      // You might redirect back to the page they came from, or a default view
+      res.redirect('/login'); 
+    } else {
+      // Transaction not found error
+      res.status(404).send('Transaction not found or unauthorized');
+    }
+
+  } catch (err) {
+    next(err);
+  }
+});
+
 
 module.exports = router;
