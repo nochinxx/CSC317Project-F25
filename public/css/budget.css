@@ -111,3 +111,37 @@ ul {
 input, select {
     margin: 5px;
 }
+
+/* Removes bullet points */
+main ul {
+  list-style-type: none;
+  padding-left: 0; /* Ensures the list items align with other content */
+}
+
+/* make the list items look cleaner */
+main ul li {
+  display: flex;
+  justify-content: space-between; /* Pushes the edit/delete buttons to the right */
+  padding: 8px 0;
+  border-bottom: 1px solid #FFCC00; /* Use your existing border color */
+  align-items: center;
+}
+
+/* Style for the edit/delete*/
+main ul li a {
+  margin-right: 10px;
+  color: #A0522D; /* Use your existing navbar color for links */
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+main ul li button {
+  /* Inherit your existing button styles*/
+  background-color: #DB4437; /* A distinct red for delete actions */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+

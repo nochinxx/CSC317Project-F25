@@ -33,6 +33,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `controllers/` - Route handlers
 - `routes/` - Express route definitions
 - `middlewares/` - Custom middleware functions
-- `views/` - EJS templates
+- `views/` - EJS templatesa
 
 When working in this Express.js application, follow the existing patterns in controllers, models, and routes folders. Handle all form validation with express-validator and use the error handling middleware for consistent error responses.
